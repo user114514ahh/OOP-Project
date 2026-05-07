@@ -27,14 +27,14 @@ services:
   backend:
     build: ./backend
     container_name: oop_backend
+    env_file:
+      - .env
     volumes:
       - ./backend:/app
     ports:
       - "8000:8000"
     environment:
       - REDIS_URL=redis://redis:6379/0
-      - DJANGO_SECRET_KEY=填入你的一串隨機亂碼_例如_abc123xyz
-      - DJANGO_DEBUG=True
     depends_on:
       - redis
     # 這裡先預留啟動指令，等你的 manage.py 準備好後取消註解即可
